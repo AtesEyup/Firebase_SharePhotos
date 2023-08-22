@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="replyBlue">#344055</color>
+    <color name="replyOrange">#F9AA33</color>
+    <color name="red">#D32F2F</color>
+    <color name="progressBar">#2ACCCCCC</color>
+</resources>

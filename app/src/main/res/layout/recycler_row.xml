@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/row_LblShareEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Paylaşan: eyup@amonsis.com"
+        android:layout_marginBottom="5dp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/row_ImgShareImage"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginBottom="5dp"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/row_LblShareComment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        android:layout_weight="1"
+        android:text="Kullanıcı Yorumu" />
+
+    <TextView
+        android:id="@+id/row_LblShareDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="end"
+        android:text="22/08/2023" />
+
+</LinearLayout>

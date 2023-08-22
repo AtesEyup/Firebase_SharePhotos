@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "833914457838",
+    "project_id": "sharephoto-1e7e4",
+    "storage_bucket": "sharephoto-1e7e4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:833914457838:android:aab9c657b1312ee4e26dff",
+        "android_client_info": {
+          "package_name": "com.eypates.firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "833914457838-6cvnijm5ugqaag7sg1hpm01uflmd0r86.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTG_H5PrQ0eCWYaetTWmLZA6b8u3c5vZU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "833914457838-6cvnijm5ugqaag7sg1hpm01uflmd0r86.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
