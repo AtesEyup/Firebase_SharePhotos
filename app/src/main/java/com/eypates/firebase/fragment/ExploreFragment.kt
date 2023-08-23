@@ -61,7 +61,7 @@ class ExploreFragment : Fragment() {
             if (value != null) {
                 if (!value.isEmpty) {
 
-                    val list = value.documents.map { x -> DataModel(url = x.get("url") as String, email = x.get("email") as String, comment = x.get("comment") as String, dateTime = x.get("dateTime") as Timestamp) }
+                    val list = value.documents.map { x -> DataModel(url = x.get("url") as String, email = x.get("email") as String, comment = x.get("comment") as String, dateTime = (x.get("dateTime") as Timestamp).toDate().toLocaleString()) }
 
                     dataList.addAll(list)
 
