@@ -35,6 +35,6 @@ class DataAdapter(private var dataList: MutableList<DataModel>) : RecyclerView.A
         holder.lblEmail.text = data.email
         holder.lblDate.text = data.dateTime.toString()
         holder.lblComment.text = data.comment
-        Picasso.get().load(data.url).into(holder.imgPhoto)
+        Picasso.get().load(data.url).resize(320, 360).into(holder.imgPhoto)
     }
 }
