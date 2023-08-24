@@ -40,5 +40,11 @@
             android:layout_margin="16dp"
             android:text="Kayıt Ol" />
 
+        <TextView
+            android:id="@+id/main_LblVersion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center" />
+
     </LinearLayout>
 </layout>
