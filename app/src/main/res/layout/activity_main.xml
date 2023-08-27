@@ -10,6 +10,12 @@
         android:padding="10dp"
         tools:context=".ui.LoginActivity">
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/account_person" />
+
         <EditText
             android:id="@+id/main_TxtEmail"
             android:layout_width="match_parent"
@@ -31,6 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
+            android:backgroundTint="@color/replyOrange"
             android:text="Giriş" />
 
         <Button
@@ -38,6 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
+            android:backgroundTint="#FFAB00"
             android:text="Kayıt Ol" />
 
         <TextView

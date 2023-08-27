@@ -7,8 +7,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:translationZ="90dp"
         tools:context=".ui.DashboardActivity">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragmentContainerView"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:defaultNavHost="true"
+            app:layout_anchor="@id/dashboard_BottomBar"
+            app:navGraph="@navigation/navigation_graph" />
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/dashboard_BottomBar"
@@ -23,8 +31,9 @@
             app:layout_anchorGravity="bottom">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cons"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/dashboard_BtnExplore"
@@ -67,14 +76,6 @@
             app:fabCustomSize="60dp"
             app:layout_anchor="@id/dashboard_BottomBar"
             app:shapeAppearance="@style/Widget.MaterialComponents.CircularProgressIndicator" />
-
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragmentContainerView"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="match_parent"
-            android:layout_height="640dp"
-            app:defaultNavHost="true"
-            app:navGraph="@navigation/navigation_graph" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
