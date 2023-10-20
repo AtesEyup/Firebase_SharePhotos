@@ -6,31 +6,28 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.eypates.firebase.adapter.DataAdapter
 import com.eypates.firebase.databinding.FragmentExploreBinding
-import com.eypates.firebase.model.DataModel
-import com.google.firebase.Timestamp
+import com.eypates.firebase.fragment.vm.ExploreVM
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
 import com.google.firebase.storage.FirebaseStorage
 
 class ExploreFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var storage: FirebaseStorage
-    private lateinit var database: FirebaseFirestore
 
-    var dataList = mutableListOf<DataModel>()
-
+    private lateinit var exploreVM: ExploreVM
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         auth = FirebaseAuth.getInstance()
         storage = FirebaseStorage.getInstance()
-        database = FirebaseFirestore.getInstance()
+
+        exploreVM = ViewModelProvider(this)[ExploreVM::class.java]
 
     }
 
@@ -46,31 +43,26 @@ class ExploreFragment : Fragment() {
         val decorator = DividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL)
         layoutBnd.exploreFRecyclerView.addItemDecoration(decorator)
 
-        dataDownload()
+        exploreVM.dataDownload()
 
+        lsData()
         return layoutBnd.root
     }
-    private fun dataDownload() {
-        database.collection("Post").orderBy("dateTime", Query.Direction.DESCENDING).addSnapshotListener { value, exception ->
-            if (exception != null) {
-                Toast.makeText(activity, exception.localizedMessage, Toast.LENGTH_LONG).show()
-                return@addSnapshotListener
-            }
 
-            dataList.clear()
+    private fun lsData() {
 
-            if (value != null) {
-                if (!value.isEmpty) {
-
-                    val list = value.documents.map { x -> DataModel(url = x.get("url") as String, email = x.get("email") as String, comment = x.get("comment") as String, dateTime = (x.get("dateTime") as Timestamp).toDate().toLocaleString()) }
-
-                    dataList.addAll(list)
-
-                    val adapter = DataAdapter(dataList)
-                    layoutBnd.exploreFRecyclerView.adapter = adapter
-
-                }
+        exploreVM.lsData.observe(viewLifecycleOwner) { observe ->
+            observe.let {
+                val adExplore = DataAdapter(it)
+                layoutBnd.exploreFRecyclerView.adapter = adExplore
             }
         }
+
+        exploreVM.errorMessage.observe(viewLifecycleOwner) { observe ->
+            observe.let {
+                if (it != "") Toast.makeText(context, it, Toast.LENGTH_LONG).show()
+            }
+        }
+
     }
 }
