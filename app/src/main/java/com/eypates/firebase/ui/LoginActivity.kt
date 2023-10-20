@@ -41,6 +41,9 @@ class LoginActivity : AppCompatActivity() {
 
             }
 
+            layoutBnd.mainBtnLogin.isEnabled = false
+            layoutBnd.mainBtnRegister.isEnabled = false
+
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
@@ -49,7 +52,13 @@ class LoginActivity : AppCompatActivity() {
                         finish()
                     }
                 }
-                .addOnFailureListener { exception -> Toast.makeText(this, exception.localizedMessage, Toast.LENGTH_LONG).show() }
+                .addOnFailureListener { exception ->
+                    Toast.makeText(this, exception.localizedMessage, Toast.LENGTH_LONG).show()
+
+                    layoutBnd.mainBtnLogin.isEnabled = true
+                    layoutBnd.mainBtnRegister.isEnabled = true
+
+                }
         }
 
         layoutBnd.mainBtnRegister.setOnClickListener {

@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="line"
+            type="com.eypates.firebase.model.DataModel" />
+    </data>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,7 +16,7 @@
         android:id="@+id/row_LblShareEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Paylaşan: eyup@amonsis.com"
+        android:text="@{line.email}"
         android:layout_marginBottom="5dp"
         android:textStyle="bold" />
 
@@ -27,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="3dp"
         android:layout_weight="1"
-        android:text="Kullanıcı Yorumu" />
+        android:text="@{line.comment}" />
 
     <TextView
         android:id="@+id/row_LblShareDate"
@@ -35,6 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="end"
-        android:text="22/08/2023" />
+        android:text="@{line.dateTime}" />
 
 </LinearLayout>
+</layout>

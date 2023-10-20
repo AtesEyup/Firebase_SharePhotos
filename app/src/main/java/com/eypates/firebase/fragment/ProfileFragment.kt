@@ -27,9 +27,8 @@ class ProfileFragment : Fragment() {
         layoutBnd.profileFLblEmail.text = auth.currentUser!!.email
 
         layoutBnd.profileFLblLogout.setOnClickListener {
-            // Özel alert dialog mesajı
             auth.signOut()
-            startActivity(Intent(activity, LoginActivity::class.java))
+            startActivity(Intent(requireActivity(), LoginActivity::class.java))
         }
 
         return layoutBnd.root

@@ -81,7 +81,7 @@ class PhotoFragment : Fragment() {
             }
         }
 
-        layoutBnd.photoFBtnShare.setOnClickListener {
+        layoutBnd.photoFBtnShare.setOnClickListener { v ->
 
             val imageUUID = UUID.randomUUID()
 
@@ -110,20 +110,20 @@ class PhotoFragment : Fragment() {
 
                             database.collection("Post").add(postHashMap)
                                 .addOnSuccessListener {
-                                    Toast.makeText(activity, "Fotoğraf Db'ye Yüklendi", Toast.LENGTH_LONG).show()
-//                                    findNavController().navigate(R.id.action_photoFragment_to_exploreFragment)
+
                                 }
                         }
 
                 }
                 .addOnProgressListener {
-                    layoutBnd.photoFProgressBar.visibility = View.VISIBLE
+                    layoutBnd.photoFTxtDescription.isEnabled = false
+                    layoutBnd.photoFBtnShare.isEnabled = false
+                    layoutBnd.photoFBtnAgain.isEnabled = false
                 }
                 .addOnFailureListener {
                     Toast.makeText(activity, it.localizedMessage, Toast.LENGTH_LONG).show()
                     layoutBnd.photoFProgressBar.visibility = View.GONE
                 }
-
         }
 
         return layoutBnd.root
@@ -135,20 +135,19 @@ class PhotoFragment : Fragment() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
         if (requestCode == READ_STORAGE_REQUEST_CODE) {
-            if (grantResults.isNotEmpty()) {
 
-                if (Build.VERSION.SDK_INT >= 33) {
-                    if (ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.READ_MEDIA_IMAGES) != PackageManager.PERMISSION_GRANTED)
-                        ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.READ_MEDIA_IMAGES), READ_STORAGE_REQUEST_CODE)
-                    else
-                        startActivityForResult(Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI), MEDIA_REQUEST_CODE)
-                } else {
-                    if (ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
-                        ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), READ_STORAGE_REQUEST_CODE)
-                    else
-                        startActivityForResult(Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI), MEDIA_REQUEST_CODE)
-                }
+            if (Build.VERSION.SDK_INT >= 33) {
+                if (ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.READ_MEDIA_IMAGES) != PackageManager.PERMISSION_GRANTED)
+                    ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.READ_MEDIA_IMAGES), READ_STORAGE_REQUEST_CODE)
+                else
+                    startActivityForResult(Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI), MEDIA_REQUEST_CODE)
+            } else {
+                if (ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
+                    ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), READ_STORAGE_REQUEST_CODE)
+                else
+                    startActivityForResult(Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI), MEDIA_REQUEST_CODE)
             }
+
         }
     }
 
