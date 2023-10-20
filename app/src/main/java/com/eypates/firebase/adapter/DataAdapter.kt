@@ -1,28 +1,20 @@
 package com.eypates.firebase.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.eypates.firebase.R
+import com.eypates.firebase.databinding.RecyclerRowBinding
 import com.eypates.firebase.model.DataModel
 import com.squareup.picasso.Picasso
 
-class DataAdapter(private var dataList: MutableList<DataModel>) : RecyclerView.Adapter<DataAdapter.ViewHolder>() {
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class DataAdapter(private var dataList: List<DataModel>) : RecyclerView.Adapter<DataAdapter.ViewHolder>() {
 
-        val lblEmail: TextView = itemView.findViewById(R.id.row_LblShareEmail)
-        val lblDate: TextView = itemView.findViewById(R.id.row_LblShareDate)
-        val lblComment: TextView = itemView.findViewById(R.id.row_LblShareComment)
-        val imgPhoto: ImageView = itemView.findViewById(R.id.row_ImgShareImage)
-
-    }
+    inner class ViewHolder(val binding: RecyclerRowBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_row, parent, false)
-        return ViewHolder(view)
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding = RecyclerRowBinding.inflate(layoutInflater, parent, false)
+        return ViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
@@ -30,11 +22,9 @@ class DataAdapter(private var dataList: MutableList<DataModel>) : RecyclerView.A
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val data = dataList[position]
+        val item = dataList[position]
+        Picasso.get().load(item.url).resize(400,500).into(holder.binding.rowImgShareImage)
 
-        holder.lblEmail.text = data.email
-        holder.lblDate.text = data.dateTime
-        holder.lblComment.text = data.comment
-        Picasso.get().load(data.url).into(holder.imgPhoto)
+        holder.binding.line = item
     }
 }
