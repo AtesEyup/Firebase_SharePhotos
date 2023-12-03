@@ -76,6 +76,38 @@ class LoginActivity : AppCompatActivity() {
                 .addOnFailureListener { exception -> Toast.makeText(this, exception.localizedMessage, Toast.LENGTH_LONG).show() }
 
         }
-        layoutBnd.mainLblVersion.text = "V 1.2"
+
     }
+
+    /* private fun flipCardView() {
+         val flipAnimator = AnimatorInflater.loadAnimator(this, R.animator.rotate)
+         flipAnimator.setTarget(layoutBnd.mainCardView)
+         flipAnimator.addListener(object : Animator.AnimatorListener {
+             override fun onAnimationStart(animation: Animator) {}
+
+             override fun onAnimationEnd(animation: Animator) {
+
+             }
+
+             override fun onAnimationCancel(animation: Animator) {}
+
+             override fun onAnimationRepeat(animation: Animator) {}
+         })
+         flipAnimator.start()
+     }
+     private fun rotateCardView() {
+       val rotateAnimation = AnimationUtils.loadAnimation(this, R.anim.rotate)
+         rotateAnimation.setAnimationListener(object : android.view.animation.Animation.AnimationListener {
+             override fun onAnimationStart(animation: android.view.animation.Animation) {}
+
+             override fun onAnimationRepeat(animation: android.view.animation.Animation) {}
+
+             override fun onAnimationEnd(animation: android.view.animation.Animation) {
+
+             }
+         })
+
+         layoutBnd.mainCardView.startAnimation(rotateAnimation)
+     }*/
+
 }

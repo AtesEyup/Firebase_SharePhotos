@@ -1,58 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="10dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/loginbkg"
         tools:context=".ui.LoginActivity">
 
-        <ImageView
-            android:layout_width="wrap_content"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/main_CardView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/account_person" />
+            android:layout_margin="10dp"
+            android:background="@drawable/custom_comp"
+            app:cardCornerRadius="30dp">
 
-        <EditText
-            android:id="@+id/main_TxtEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:hint="Email Adresinizi Giriniz"
-            android:inputType="textEmailAddress" />
+            <LinearLayout
+                android:layout_width="402dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="24dp">
 
-        <EditText
-            android:id="@+id/main_TxtPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:hint="Şifrenizi Giriniz"
-            android:inputType="textPassword" />
+                <EditText
+                    android:id="@+id/main_TxtEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/background_selector"
+                    android:drawableLeft="@drawable/email_ico"
+                    android:drawablePadding="8dp"
+                    android:hint="Email Adresinizi Giriniz"
+                    android:padding="8dp"
+                    android:textColor="@color/black" />
 
-        <Button
-            android:id="@+id/main_BtnLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:backgroundTint="@color/replyOrange"
-            android:text="Giriş" />
+                <EditText
+                    android:id="@+id/main_TxtPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/background_selector"
+                    android:drawableLeft="@drawable/lock_ico"
+                    android:drawablePadding="8dp"
+                    android:hint="Şifrenizi Giriniz"
+                    android:inputType="textPassword"
+                    android:padding="8dp"
+                    android:textColor="@color/black" />
 
-        <Button
-            android:id="@+id/main_BtnRegister"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:backgroundTint="#FFAB00"
-            android:text="Kayıt Ol" />
+                <Button
+                    android:id="@+id/main_BtnLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/replyOrange"
+                    android:padding="8dp"
+                    android:text="Giriş" />
 
-        <TextView
-            android:id="@+id/main_LblVersion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center" />
+                <Button
+                    android:id="@+id/main_BtnRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/replyOrange"
+                    android:padding="8dp"
+                    android:text="Kayıt Ol" />
 
-    </LinearLayout>
+                <!--                    <LinearLayout-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_gravity="right"-->
+                <!--                        android:layout_marginTop="5dp">-->
+
+                <!--                        <TextView-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:text="Hemen "-->
+                <!--                            android:textSize="18dp" />-->
+
+                <!--                        <TextView-->
+                <!--                            android:id="@+id/main_BtnRegister"-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:text="Kayıt Ol"-->
+                <!--                            android:textSize="18dp"-->
+                <!--                            android:textStyle="bold" />-->
+
+                <!--                    </LinearLayout>-->
+
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+    </ScrollView>
 </layout>

@@ -53,7 +53,7 @@ class ExploreFragment : Fragment() {
 
         exploreVM.lsData.observe(viewLifecycleOwner) { observe ->
             observe.let {
-                val adExplore = DataAdapter(it)
+                val adExplore = DataAdapter(it, requireContext())
                 layoutBnd.exploreFRecyclerView.adapter = adExplore
             }
         }

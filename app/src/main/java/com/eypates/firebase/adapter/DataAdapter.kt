@@ -1,13 +1,15 @@
 package com.eypates.firebase.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.eypates.firebase.databinding.RecyclerRowBinding
 import com.eypates.firebase.model.DataModel
-import com.squareup.picasso.Picasso
 
-class DataAdapter(private var dataList: List<DataModel>) : RecyclerView.Adapter<DataAdapter.ViewHolder>() {
+class DataAdapter(private var dataList: List<DataModel>, private var context: Context) : RecyclerView.Adapter<DataAdapter.ViewHolder>() {
 
     inner class ViewHolder(val binding: RecyclerRowBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -23,7 +25,11 @@ class DataAdapter(private var dataList: List<DataModel>) : RecyclerView.Adapter<
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = dataList[position]
-        Picasso.get().load(item.url).resize(400,500).into(holder.binding.rowImgShareImage)
+        Glide
+            .with(context)
+            .load(item.url)
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .into(holder.binding.rowImgShareImage)
 
         holder.binding.line = item
     }
